@@ -32,12 +32,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use([
-  require("./routes/user_route")
+  require("./routes/user_route"),
+  require("./routes/short_link_route")
 ]);
 
 app.use((req, res, next) => {
   // eslint-disable-next-line node/no-path-concat
-  res.status(404).sendFile(__dirname + "/myfirstreactapp/public/404.html");
+  res.status(404).send("404 Page Not Found");
+});
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 // eslint-disable-next-line node/handle-callback-err
