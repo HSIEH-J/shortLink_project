@@ -16,7 +16,7 @@ app.use(express.static("myfirstreactapp/public"));
 const passport = require("passport");
 const session = require("express-session");
 const MysqlStore = require("express-mysql-session")(session);
-const { mysqlEnv } = require("./models/mysql");
+const { mysqlEnv } = require("./server/models/mysql");
 const sessionStore = new MysqlStore(mysqlEnv);
 
 app.use(session({
@@ -32,8 +32,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use([
-  require("./routes/user_route"),
-  require("./routes/short_link_route")
+  require("./server/routes/user_route"),
+  require("./server/routes/short_link_route")
 ]);
 
 app.use((req, res, next) => {
@@ -52,7 +52,7 @@ app.use((err, req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("the server is listening on port 3000...");
+  console.log(`the server is listening on port ${port}...`);
 });
 
 module.exports = app;

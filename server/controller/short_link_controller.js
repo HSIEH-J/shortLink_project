@@ -9,7 +9,7 @@ const generateShortLink = async (req, res) => {
   const url = req.body.url;
   console.log(url);
   const shortLink = "http://localhost:3000/test/" + getTimeStamp();
-  res.json({url: url, shortLink: shortLink});
+  res.json({ url: url, shortLink: shortLink });
 };
 
 // find original URL and redirect
