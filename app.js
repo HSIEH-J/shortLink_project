@@ -11,13 +11,16 @@ const port = NODE_ENV === "test" ? PORT_TEST : PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("myfirstreactapp/public"));
 
 const passport = require("passport");
 const session = require("express-session");
 const MysqlStore = require("express-mysql-session")(session);
 const { mysqlEnv } = require("./server/models/mysql");
 const sessionStore = new MysqlStore(mysqlEnv);
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use(session({
   secret: "mySecret",
@@ -39,10 +42,6 @@ app.use([
 app.use((req, res, next) => {
   // eslint-disable-next-line node/no-path-concat
   res.status(404).send("404 Page Not Found");
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
 });
 
 // eslint-disable-next-line node/handle-callback-err
