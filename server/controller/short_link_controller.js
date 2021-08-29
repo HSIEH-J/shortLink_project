@@ -15,7 +15,11 @@ const generateShortLink = async (req, res) => {
 // find original URL and redirect
 const findUrl = async (req, res) => {
   console.log(req.params.url);
-  res.redirect("https://ithelp.ithome.com.tw/articles/10200658");
+  const { url } = req.params;
+  if (url) {
+    res.redirect("https://ithelp.ithome.com.tw/articles/10200658");
+  }
+  res.json("return");
   // res.send("findUrl");
 };
 
