@@ -8,7 +8,7 @@ const getTimeStamp = () => {
 const generateShortLink = async (req, res) => {
   const url = req.body.url;
   console.log(url);
-  const shortLink = "http://localhost:3000/test/" + getTimeStamp();
+  const shortLink = "http://www.isho.xyz/" + getTimeStamp();
   res.json({ url: url, shortLink: shortLink });
 };
 
