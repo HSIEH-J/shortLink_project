@@ -18,6 +18,7 @@ const findUrl = async (req, res) => {
   const { url } = req.params;
   if (url) {
     res.redirect("https://ithelp.ithome.com.tw/articles/10200658");
+    return;
   }
   res.json("return");
   // res.send("findUrl");
