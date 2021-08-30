@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { signUp, loginAuthenticate, logout } = require("../controller/user_controller");
+const { signUpAuthenticate, loginAuthenticate, logout } = require("../controller/user_controller");
 
-router.route("/signup").post(signUp);
+router.route("/signup").post(signUpAuthenticate);
 router.route("/login").post(loginAuthenticate);
 router.route("/logout").get(logout);
 
