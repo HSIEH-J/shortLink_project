@@ -3,12 +3,7 @@ const express = require("express");
 const app = express();
 
 const cors = require("cors");
-app.use(cors({
-  credentials: true,
-  origin: "https://56fa-114-32-127-103.ngrok.io"
-}));
-
-app.set("trust proxy", 1);
+app.use(cors());
 
 // env
 require("dotenv").config();
@@ -19,6 +14,7 @@ const port = NODE_ENV === "test" ? PORT_TEST : PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const passport = require("passport");
 const session = require("express-session");
@@ -35,8 +31,7 @@ app.use(session({
   name: "user",
   saveUninitialized: false,
   resave: false,
-  store: sessionStore,
-  cookie: { Secure: true, SameSite: "none" }
+  store: sessionStore
 }));
 
 app.use(passport.initialize());
