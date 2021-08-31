@@ -13,8 +13,6 @@ const loginAuthenticate = (req, res, next) => {
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      res.header("Access-Control-Allow-Origin", "http://localhost:3000/");
-      res.header("Access-Control-Allow-Credentials", true);
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
