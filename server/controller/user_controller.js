@@ -4,7 +4,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
 const loginAuthenticate = (req, res, next) => {
-  console.log(req.session);
   passport.authenticate("local", (err, user, info) => {
     if (err) { return next(err); };
     console.log(user);
@@ -19,7 +18,7 @@ const loginAuthenticate = (req, res, next) => {
 };
 
 const signUpAuthenticate = (req, res, next) => {
-  console.log(req.session);
+  console.log(req.body.email);
   passport.authenticate("local-signup", (err, user, info) => {
     if (err) { return next(err); };
     console.log(user);
@@ -110,7 +109,7 @@ passport.deserializeUser(async (id, done) => {
 const logout = async (req, res) => {
   req.logout();
   req.session.destroy();
-  res.redirect("/");
+  res.status(200).json("Log out successfully");
 };
 
 module.exports = { signUpAuthenticate, loginAuthenticate, logout };
