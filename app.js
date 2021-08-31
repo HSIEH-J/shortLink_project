@@ -33,7 +33,10 @@ app.use(session({
   name: "user",
   saveUninitialized: false,
   resave: false,
-  store: sessionStore
+  store: sessionStore,
+  cookie: {
+    sameSite: "none"
+  }
 }));
 
 app.use(passport.initialize());
