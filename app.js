@@ -5,7 +5,8 @@ const app = express();
 const cors = require("cors");
 app.use(cors({
   credentials: true,
-  origin: 'https://56fa-114-32-127-103.ngrok.io'
+  origin: "https://56fa-114-32-127-103.ngrok.io"
+}));
 
 // env
 require("dotenv").config();
