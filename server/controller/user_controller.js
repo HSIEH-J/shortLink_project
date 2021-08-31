@@ -13,7 +13,6 @@ const loginAuthenticate = (req, res, next) => {
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      res.setHeader("Access-Control-Allow-Credentials", true);
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
