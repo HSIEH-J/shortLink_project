@@ -13,6 +13,7 @@ const loginAuthenticate = (req, res, next) => {
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
+      res.setHeader("Access-Control-Allow-Credentials", true);
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
@@ -31,11 +32,6 @@ const signUpAuthenticate = (req, res, next) => {
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
-};
-
-const test = (req, res) => {
-  res.cookie("test", "set cookie test");
-  res.send("test for setting cookie");
 };
 
 // build authentication mechanism through passport.use() -- Log in
@@ -118,4 +114,4 @@ const logout = async (req, res) => {
   res.redirect("/");
 };
 
-module.exports = { signUpAuthenticate, loginAuthenticate, logout, test };
+module.exports = { signUpAuthenticate, loginAuthenticate, logout };
