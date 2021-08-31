@@ -9,7 +9,7 @@ const mysqlConfig = {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PWD,
-    database: "short_links"
+    database: process.env.DB_NAME
   },
   test: {
     host: process.env.DB_HOST,
