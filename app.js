@@ -36,7 +36,7 @@ app.use(session({
   store: sessionStore,
   cookie: {
     SameSite: "none",
-    secure: true
+    Secure: true
   }
 }));
 
