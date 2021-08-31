@@ -35,6 +35,7 @@ const signUpAuthenticate = (req, res, next) => {
 
 const test = (req, res) => {
   res.cookie("test", "set cookie test");
+  res.send("test for setting cookie");
 };
 
 // build authentication mechanism through passport.use() -- Log in
