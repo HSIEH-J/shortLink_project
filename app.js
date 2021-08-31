@@ -8,6 +8,8 @@ app.use(cors({
   origin: "https://56fa-114-32-127-103.ngrok.io"
 }));
 
+app.set("trust proxy", 1);
+
 // env
 require("dotenv").config();
 const { PORT_TEST, PORT, NODE_ENV } = process.env;
