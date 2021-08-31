@@ -13,6 +13,8 @@ const loginAuthenticate = (req, res, next) => {
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
+      res.header("Access-Control-Allow-Origin", "https://56fa-114-32-127-103.ngrok.io");
+      res.header("Access-Control-Allow-Credentials", true);
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
