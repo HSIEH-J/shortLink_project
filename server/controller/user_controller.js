@@ -9,11 +9,11 @@ const loginAuthenticate = (req, res, next) => {
     if (err) { return next(err); };
     console.log(user);
     if (!user) {
-      return res.send({ message: info.message });
+      return res.status(401).send({ message: info.message });
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      return res.send({ message: "login successfully" });
+      return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
 };
@@ -24,11 +24,12 @@ const signUpAuthenticate = (req, res, next) => {
     if (err) { return next(err); };
     console.log(user);
     if (!user) {
-      return res.send({ message: info.message });
+      return res.status(401).send({ message: info.message });
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      return res.send({ message: "sign up  successfully" });
+      res.cookie("test", "set cookie test");
+      return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
 };
