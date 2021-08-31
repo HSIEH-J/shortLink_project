@@ -33,12 +33,13 @@ app.use(session({
   name: "user",
   saveUninitialized: false,
   resave: false,
-  store: sessionStore,
-  cookie: {
-    sameSite: "none",
-    secure: true
-  }
+  store: sessionStore
 }));
+
+// cookie: {
+//   sameSite: "none",
+//   secure: true
+// }
 
 app.use(passport.initialize());
 // if login session is used =>
