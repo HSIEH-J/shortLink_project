@@ -28,8 +28,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.set("trust proxy", 1);
-
 app.use(session({
   secret: "mySecret",
   name: "user",
