@@ -28,10 +28,13 @@ const signUpAuthenticate = (req, res, next) => {
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      res.cookie("test", "set cookie test");
       return res.status(200).send({ message: "login successfully" });
     });
   })(req, res, next);
+};
+
+const test = (req, res) => {
+  res.cookie("test", "set cookie test");
 };
 
 // build authentication mechanism through passport.use() -- Log in
@@ -114,4 +117,4 @@ const logout = async (req, res) => {
   res.redirect("/");
 };
 
-module.exports = { signUpAuthenticate, loginAuthenticate, logout };
+module.exports = { signUpAuthenticate, loginAuthenticate, logout, test };
