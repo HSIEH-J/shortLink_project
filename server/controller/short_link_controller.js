@@ -1,3 +1,5 @@
+const links = require("../models/short_link_model");
+
 const getTimeStamp = () => {
   const date = Date.now();
   const timestamp = Math.floor(date / 1000); ;
@@ -5,11 +7,21 @@ const getTimeStamp = () => {
 };
 
 // generate short links
-const generateShortLink = async (req, res) => {
-  const url = req.body.url;
-  console.log(url);
-  const shortLink = "http://www.isho.xyz/" + getTimeStamp();
-  res.json({ url: url, shortLink: shortLink });
+const generateShortLink = async (req, res, next) => {
+  try {
+    // check isURL
+    //
+    //
+    const url = req.body.url;
+    // generate short link
+    const shortLink = "https://www.isho.xyz/" + getTimeStamp();
+    const result = await links.shortLink(url, shortLink);
+    console.log(result);
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
 };
 
 // find original URL and redirect
