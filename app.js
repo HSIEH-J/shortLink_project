@@ -20,6 +20,7 @@ const port = NODE_ENV === "test" ? PORT_TEST : PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const passport = require("passport");
 const session = require("express-session");
