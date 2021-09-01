@@ -5,6 +5,12 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+// Socket.IO
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
 // env
 require("dotenv").config();
 const { PORT_TEST, PORT, NODE_ENV } = process.env;
@@ -23,6 +29,13 @@ const sessionStore = new MysqlStore(mysqlEnv);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+});
+
+io.on("connection", async (socket) => {
+  console.log("a user connected", socket.id);
+  socket.on("disconnect", async () => {
+    console.log("Connection disconnected", socket.id);
+  });
 });
 
 app.use(session({
@@ -53,7 +66,7 @@ app.use((err, req, res) => {
   res.status(500).send({ error: "server error" });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`the server is listening on port ${port}...`);
 });
 
