@@ -37,6 +37,10 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", async () => {
     console.log("Connection disconnected", socket.id);
   });
+  socket.on("test", msg => {
+    console.log(msg);
+  });
+  socket.emit("test", "test");
 });
 
 app.use(session({

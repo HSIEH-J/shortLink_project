@@ -24,7 +24,7 @@ const generateShortLink = async (req, res, next) => {
     const linkData = {
       id: result.link.id,
       url: url,
-      shortLinkUrl: shortLinkUrl
+      shortLink: shortLinkUrl
     };
     res.status(200).json(linkData);
   } catch (err) {
@@ -41,7 +41,7 @@ const findUrl = async (req, res) => {
   if (result.error) {
     return res.status(404).send("404 Page Not Found");
   }
-  console.log(result);
+
   return res.status(302).redirect(result.original_url);
 };
 

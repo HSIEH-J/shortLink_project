@@ -43,4 +43,9 @@ const findUrl = async (shortLink) => {
   // may cause race condition
 };
 
+const showRedirectTimes = async (id) => {
+  const result = await pool.query("SELECT id, times FROM links WHERE id = ?", [id]);
+  return result[0][0];
+};
+
 module.exports = { shortLink, findUrl, checkIsShortLink };
