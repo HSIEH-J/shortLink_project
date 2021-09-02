@@ -9,13 +9,17 @@ const generateUID = () => {
 };
 
 const checkFormat = (url) => {
-  const urlRe = /^(http|https)\:\/\/*/;
-  if (url.match(urlRe)) {
-    return true;
-  } else {
+  const urls = url.split(":");
+  console.log(urls);
+  if (urls[0] !== "http" && urls[0] !== "https") {
     return false;
+  } else {
+    return true;
   }
 };
+
+const url = "htt://123456";
+console.log(checkFormat(url));
 
 // generate short links
 const generateShortLink = async (req, res, next) => {

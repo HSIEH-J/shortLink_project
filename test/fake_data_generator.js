@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { NODE_ENV } = process.env;
-const { pool } = require("../models/mysql");
+const { pool } = require("../server/models/mysql");
 // const bcrypt = require("bcrypt");
 // const salt = parseInt(process.env.BCRYPT_SALT);
 
