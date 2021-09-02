@@ -2,7 +2,6 @@ const app = require("../app");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const { NODE_ENV } = process.env;
-// const { truncateFakeData, createFakeData } = require("./fake_data_generator");
 
 chai.use(chaiHttp);
 
@@ -15,8 +14,6 @@ before(async () => {
     // eslint-disable-next-line no-throw-literal
     throw "Not in test env";
   }
-  // await truncateFakeData();
-  // await createFakeData();
 });
 
 module.exports = {
