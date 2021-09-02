@@ -3,7 +3,7 @@ const { pool } = require("./mysql");
 const checkIsShortLink = async (shortLink) => {
   const result = await pool.query("SELECT short_link FROM links WHERE short_link = ?", [shortLink]);
   if (result[0].length !== 0) {
-    return { error: "Duplicate Short Link." };
+    return false;
   } else {
     return true;
   }
