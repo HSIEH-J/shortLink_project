@@ -53,12 +53,25 @@
 
 <ul>
   <li>短網址生成</li>
-  ![image](ReadMe/generateShortLink.mov)
-  <li>註冊、登入和登出</li>
-  User can create folders to classify their bookmarks.
-  <li>查看短網址點擊次數</li>
-  User can create sticky notes to write remarks.
+  輸入想轉換的網址後點下按鈕即可得到生成的短網址。
 </ul>
+
+![image](ReadMe/generate.gif)
+
+<ul>
+  <li>註冊、登入和登出</li>
+  點選右上角的Register或者Log In按鈕即可進行帳號註冊或登入作業，註冊或登入後按鈕會換成Log Out的字樣，按下後即可登出。
+</ul>
+
+![image](ReadMe/register.gif)
+
+<ul>
+  <li>查看短網址點擊次數</li>
+  點選Show Redirect Times欄的眼睛圖示即可查看目前短網址的點擊次數，點擊圖示後標題欄會新增更新圖示，點選後將會更新當前點擊次數。
+</ul>
+
+![image](ReadMe/redirectTimes.gif)
+
 
 
 
