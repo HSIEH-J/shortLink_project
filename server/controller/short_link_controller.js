@@ -42,8 +42,8 @@ const generateShortLink = async (req, res, next) => {
     }
     // get random short link
     const shortLink = await generateRandomLink();
-    const shortLinkUrl = "http://localhost:3000/" + shortLink;
-    // const shortLinkUrl = "https://www.isho.xyz/" + shortLink;
+    // const shortLinkUrl = "http://localhost:3000/" + shortLink;
+    const shortLinkUrl = "https://www.isho.xyz/" + shortLink;
     // insert into DB
     const result = await links.shortLink(url, shortLink);
     const linkData = {
