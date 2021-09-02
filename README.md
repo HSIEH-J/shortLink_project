@@ -43,23 +43,21 @@
 
 ## <div id="structures">網站架構</div>
 
-![image](readme/structure.png)
+![image](ReadMe/structure.png)
 
 ## <div id="database">資料庫設計</div>
 
-![image](readme/database.png)
+![image](ReadMe/database.png)
 
 ## <div id="feature">功能介紹</div>
 
 <ul>
-  <li>Generate bookmarks</li>
-  When user imported URL, the website will call third party API to get the thumbnail and generate bookmarks.
-  <li>Create Folders</li>
+  <li>短網址生成</li>
+  ![image](ReadMe/generateShortLink.mov)
+  <li>註冊、登入和登出</li>
   User can create folders to classify their bookmarks.
-  <li>Create Sticky notes</li>
+  <li>查看短網址點擊次數</li>
   User can create sticky notes to write remarks.
-  <li>Build collection boards</li>
-  If there are too many bookmarks or folders, user can easily find the items by creating collection boards.
 </ul>
 
 
