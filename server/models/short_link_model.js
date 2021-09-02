@@ -43,9 +43,24 @@ const findUrl = async (shortLink) => {
   // may cause race condition
 };
 
-const showRedirectTimes = async (id) => {
-  const result = await pool.query("SELECT id, times FROM links WHERE id = ?", [id]);
-  return result[0][0];
+const showRedirectTimes = async (data) => {
+  const conn = await pool.getConnection();
+  try {
+    await conn.query("START TRANSACTION");
+    const timesResult = { data: [] };
+    for (const n of data) {
+      const result = await conn.query("SELECT id, times FROM links WHERE id = ?", [n.id]);
+      timesResult.data.push({ id: result[0][0].id, times: result[0][0].times });
+    }
+    await conn.query("COMMIT");
+    return timesResult;
+  } catch (error) {
+    console.log(error);
+    await conn.query("ROLLBACK");
+    return { error: error };
+  } finally {
+    await conn.release;
+  }
 };
 
-module.exports = { shortLink, findUrl, checkIsShortLink };
+module.exports = { shortLink, findUrl, checkIsShortLink, showRedirectTimes };

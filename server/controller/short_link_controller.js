@@ -24,7 +24,9 @@ const generateShortLink = async (req, res, next) => {
     const linkData = {
       id: result.link.id,
       url: url,
-      shortLink: shortLinkUrl
+      shortLink: shortLinkUrl,
+      status: "img",
+      render: "https://stylish-upload.s3.ap-northeast-1.amazonaws.com/witness.png"
     };
     res.status(200).json(linkData);
   } catch (err) {
@@ -45,4 +47,16 @@ const findUrl = async (req, res) => {
   return res.status(302).redirect(result.original_url);
 };
 
-module.exports = { generateShortLink, findUrl };
+const showRedirectTimes = async (req, res, next) => {
+  try {
+    console.log(req.body.data);
+    const result = await links.showRedirectTimes(req.body.data);
+    console.log(result);
+    return res.status(200).send(result);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+module.exports = { generateShortLink, findUrl, showRedirectTimes };
