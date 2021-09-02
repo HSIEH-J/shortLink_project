@@ -8,7 +8,7 @@ const loginAuthenticate = (req, res, next) => {
     if (err) { return next(err); };
     console.log(user);
     if (!user) {
-      return res.status(401).send({ message: info.message });
+      return res.status(400).send({ message: info.message });
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
@@ -23,11 +23,11 @@ const signUpAuthenticate = (req, res, next) => {
     if (err) { return next(err); };
     console.log(user);
     if (!user) {
-      return res.status(401).send({ message: info.message });
+      return res.status(400).send({ message: info.message });
     }
     req.login(user, (err) => {
       if (err) { return next(err); };
-      return res.status(200).send({ message: "login successfully" });
+      return res.status(200).send({ message: "sign up  successfully" });
     });
   })(req, res, next);
 };
@@ -109,7 +109,7 @@ passport.deserializeUser(async (id, done) => {
 const logout = async (req, res) => {
   req.logout();
   req.session.destroy();
-  res.status(200).json("Log out successfully");
+  res.status(200).send({ message: "Log Out Successfully." });
 };
 
 module.exports = { signUpAuthenticate, loginAuthenticate, logout };
