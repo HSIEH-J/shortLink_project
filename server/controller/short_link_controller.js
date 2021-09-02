@@ -1,17 +1,30 @@
 const links = require("../models/short_link_model");
 
-function generateUID () {
+const generateUID = () => {
   let firstPart = (Math.random() * 46656) | 0;
   let secondPart = (Math.random() * 46656) | 0;
   firstPart = ("000" + firstPart.toString(36)).slice(-3);
   secondPart = ("000" + secondPart.toString(36)).slice(-3);
   return firstPart + secondPart;
-}
+};
+
+const checkFormat = (url) => {
+  const urlRe = /^(http|https)\:\/\/*/;
+  if (url.match(urlRe)) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 // generate short links
 const generateShortLink = async (req, res, next) => {
   try {
     const url = req.body.url;
+    // check url format
+    if (!checkFormat(url)) {
+      return res.status(400).send({ Message: "URL Format Is Incorrect." });
+    }
     // check isURL
     if (!url.trim() || !url) {
       return res.status(400).send({ Message: "URL Is Required." });
@@ -59,4 +72,4 @@ const showRedirectTimes = async (req, res, next) => {
   }
 };
 
-module.exports = { generateShortLink, findUrl, showRedirectTimes };
+module.exports = { generateShortLink, findUrl, showRedirectTimes, checkFormat };
